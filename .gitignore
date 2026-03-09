@@ -26,3 +26,25 @@ Thumbs.db
 
 # SQLite source dependency
 sqlite-amalgamation*
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.vcxproj.user
+
+# Build outputs
+Debug/
+Release/
+x64/
+x86/
+*.obj
+*.pdb
+*.ilk
+*.exe
+
+# NuGet / packages
+packages/
+
+# Databases
+*.db
