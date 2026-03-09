@@ -19,7 +19,7 @@ void pressEnter();
 int main()
 {
 	//directory address pointer
-	const char* dir = "C:\\Users\\Juan\\Desktop\\video_game_diary\\video_games.db";
+	const char* dir = "data/video_games.db";
 	
 	//create DB and tables
 	methodCreateDB(dir);
