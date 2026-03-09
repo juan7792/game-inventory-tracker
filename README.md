@@ -1,57 +1,80 @@
-# VideoGamesDiary
+# Game Inventory & Progress Tracker
 
-This program was written in C++ with the help of the sqlite3-C++ package and sqlite3.h. Using object oriented programming in C++, with help the sqlite3 package, this program stores in a DB the name and details of the user's video games using an console interface. The flowchart of the program is available in __VideoGameDiaryFlowchart.pdf__.
+A C++ console application for managing a personal video game library and tracking gameplay progress using a relational SQLite database.
 
-## Summary
+The program allows users to create accounts, maintain a personal game library, track owned and played games, and keep a wishlist of games they want to play. All data is stored in a SQLite database and accessed through a simple console interface.
 
-### 1) Queries
+The system architecture is illustrated in:
 
-The queries are modified using the method sprintf_s() to allow the user to insert data. The queries are executed using methods from superclasses and subclasses.
+docs/game-inventory-tracker-architecture.pdf
 
-### 2) Classes
+---
 
-#### Superclasses
-Parent classes were used to section the methods to operate the database with the commands of sqlite3. Furthermore, it contains the static variables necessary to operate the menus showed in the console interface of the program.
+## Architecture
 
-#### Subclasses
-Children classes contain the queries to be built up using sprintf_s() and user inputs. The methods of the subclasses called the inherited instances and methods.
+The application is written in C++ and uses the SQLite C API (`sqlite3.h`) for database interaction.
 
-### 1) Tables
+The design separates database operations from application logic through a set of classes responsible for executing SQL queries and managing user interactions.
 
-#### users
-This table contains the usernames added to the database, using an user ID as a primary key.
+Main components include:
 
-#### video_games
-Tables users and video_games hold a relationship using the user ID as a foreign key. A video games pool is stored table "video_games", which will be called in the functions to add entries to the futher tables.
+- Console-based user interface
+- Database access layer using SQLite
+- Object-oriented design for query execution and menu logic
 
-#### owned_games
-The video games that the user owns can be added to this table by entering the user ID (with the use of a static variable) and video game ID (from table video_games).
+---
 
-#### played_games
-Once a video game has been completed, user can add an entry to this table and the data will be identified using the user ID and video game ID.
+## Database Schema
 
-#### want_to_play_games
-Upcoming or not-owned games can be stored in this table, with the use of the user ID and video game ID to identify each entry. Common entries between this table and owned_games are deleted from this table to keep consistency (if one owns a game, one no longer wants to have it, right?).
+The system uses five relational tables.
 
-## Main functions
+### users
+Stores user accounts.
 
-#### Add user
-Input data stored in table "users".
-#### Select user
-Retrieve data from table "users".
-#### Add video game to pool
-Input data stored in table "video_games".
-#### Add owned game
-Input data stored in table "owned_games". This section of the code also deletes any common entry between table "owned_games" and "want_to_play_games" in the latter table.
-#### Add played game
-Input data stored in table "played_games".
-#### Add video game to wanted list
-Input data stored in table "want_to_play_games".
-#### View video games pool
-Retrieve data from table "video_games".
-#### View owned games
-Retrieve data from table "owned_games".
-#### View played games
-Retrieve data from table "played_games".
-#### View games from wanted list
-Retrieve data from table "want_to_play_games".
+- id (primary key)
+- username
+
+### video_games
+Stores the main video game library for each user.
+
+- id (primary key)
+- user_id (foreign key → users.id)
+- game_name
+- platform
+- genre
+
+### owned_games
+Stores games owned by the user.
+
+- user_id
+- game_id
+
+### played_games
+Stores games that the user has completed or played.
+
+- user_id
+- game_id
+
+### want_to_play_games
+Stores games the user wants to play in the future.
+
+If a game is added to the owned list, it is automatically removed from the wishlist to maintain data consistency.
+
+---
+
+## Features
+
+- User account creation and selection
+- Personal video game library management
+- Tracking of owned games
+- Tracking of completed/played games
+- Wishlist for future games
+- Console-based navigation through interactive menus
+
+---
+
+## Technologies
+
+- C++
+- SQLite
+- Object-Oriented Programming
