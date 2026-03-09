@@ -1,5 +1,0 @@
-﻿  queries.cpp
-  video_game_diary.cpp
-  Generating Code...
-C:\Users\Juan\Desktop\video_game_diary\video_game_diary\video_game_diary\video_game_diary.cpp(29,7): warning C4101: 'user_input_1': unreferenced local variable
-  video_game_diary.vcxproj -> C:\Users\Juan\Desktop\video_game_diary\video_game_diary\Debug\video_game_diary.exe
