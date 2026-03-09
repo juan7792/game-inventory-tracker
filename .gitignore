@@ -1,6 +1,28 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-preguntas_alfonso_moises.txt
-video_game_diary/.vs/video_game_diary/v16/Browse.VC.opendb
-clases.txt
+# Build folders
+build/
+bin/
+obj/
+
+# Compiled objects
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.a
+
+# IDE
+.vscode/
+.idea/
+*.vcxproj*
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+
+# SQLite source dependency
+sqlite-amalgamation*
